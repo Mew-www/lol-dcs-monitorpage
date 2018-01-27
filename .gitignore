@@ -6,3 +6,6 @@
 
 # distributable (compiled) files
 /distribution/
+
+# Environment specific settings
+sources/js/settings.js

@@ -1,8 +1,8 @@
 import ReactDOM from 'react-dom';
 import React from "react";
-import {TestComponent} from "./subcomponents/test-component";
+import {AppComponent} from "./subcomponents/app-component";
 
 ReactDOM.render(
-  <TestComponent a_test_prop={"String passed as a property"}/>,
+  <AppComponent />,
   document.getElementById('app-root')
 );
