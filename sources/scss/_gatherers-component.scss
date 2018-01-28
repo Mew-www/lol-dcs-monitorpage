@@ -1,0 +1,34 @@
+.Gatherers {
+  display: table;
+  &__title {
+    @extend .h4;
+  }
+  &__inactive {
+    background: #ff522c;
+    font-weight: bold;
+    padding: 0 4px;
+  }
+  &__activity-table {
+    @extend .table;
+  }
+  &__gatherer {
+    &-id {
+
+    }
+    &-activity {
+      &-txt {
+        padding: 0 4px;
+        font-weight: bold;
+        &--operative {
+          background: #83d930;
+        }
+        &--uncertain {
+          background: #deff1b;
+        }
+        &--inactive {
+          background: #ff522c;
+        }
+      }
+    }
+  }
+}
