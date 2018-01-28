@@ -41,26 +41,28 @@ export class GatherersComponent extends Component {
             ""}
         </div>
         <table className="Gatherers__activity-table">
-          {Object.keys(this.state.activity).sort((a,b) => a-b).map((gatherer_identifier) =>
-            <tr className="Gatherers__gatherer">
-              <td className="Gatherers__gatherer-id">{gatherer_identifier}</td>
-              <td className="Gatherers__gatherer-activity">
-                <span className={
-                  "Gatherers__gatherer-activity-txt"
-                  +
-                  (activity_ago(this.state.activity, gatherer_identifier).indexOf('second') !== -1 ?
-                      " Gatherers__gatherer-activity-txt--operative"
-                      :
-                      activity_ago(this.state.activity, gatherer_identifier).indexOf('minutes') !== -1
-                      && 21 > parseInt(activity_ago(this.state.activity, gatherer_identifier).split(' ')[0]) > 6 ?
-                        " Gatherers__gatherer-activity-txt--uncertain"
+          <tbody>
+            {Object.keys(this.state.activity).sort((a,b) => a-b).map((gatherer_identifier) =>
+              <tr className="Gatherers__gatherer" key={gatherer_identifier}>
+                <td className="Gatherers__gatherer-id">{gatherer_identifier}</td>
+                <td className="Gatherers__gatherer-activity">
+                  <span className={
+                    "Gatherers__gatherer-activity-txt"
+                    +
+                    (activity_ago(this.state.activity, gatherer_identifier).indexOf('second') !== -1 ?
+                        " Gatherers__gatherer-activity-txt--operative"
                         :
-                        " Gatherers__gatherer-activity-txt--inactive"
-                  )
-                }>{activity_ago(this.state.activity, gatherer_identifier)}</span>
-              </td>
-            </tr>
-          )}
+                        activity_ago(this.state.activity, gatherer_identifier).indexOf('minutes') !== -1
+                        && 21 > parseInt(activity_ago(this.state.activity, gatherer_identifier).split(' ')[0]) > 6 ?
+                          " Gatherers__gatherer-activity-txt--uncertain"
+                          :
+                          " Gatherers__gatherer-activity-txt--inactive"
+                    )
+                  }>{activity_ago(this.state.activity, gatherer_identifier)}</span>
+                </td>
+              </tr>
+            )}
+          </tbody>
         </table>
       </div>
     );

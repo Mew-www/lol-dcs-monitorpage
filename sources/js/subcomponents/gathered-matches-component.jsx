@@ -39,15 +39,17 @@ export class GatheredMatchesComponent extends Component {
           Match data gathered ({this.state.matches['total']} amongst all regions)
         </div>
         {Object.keys(this.state.matches['per_region']).map((region) =>
-          <div className="GatheredMatches-region">
+          <div className="GatheredMatches-region" key={region}>
             <table className="GatheredMatches-table">
               <caption className="GatheredMatches-table-caption">{region}</caption>
-              {Object.keys(this.state.matches['per_region'][region]).sort(sort_tiers).map((tier) =>
-                <tr className="GatheredMatches-table-row">
-                  <td className="GatheredMatches-table-cell">{tier}:</td>
-                  <td className="GatheredMatches-table-cell">{this.state.matches['per_region'][region][tier]}</td>
-                </tr>
-              )}
+              <tbody>
+                {Object.keys(this.state.matches['per_region'][region]).sort(sort_tiers).map((tier) =>
+                  <tr className="GatheredMatches-table-row" key={region+tier}>
+                    <td className="GatheredMatches-table-cell">{tier}:</td>
+                    <td className="GatheredMatches-table-cell">{this.state.matches['per_region'][region][tier]}</td>
+                  </tr>
+                )}
+              </tbody>
             </table>
           </div>
         )}
