@@ -49,7 +49,9 @@ export class GatherersComponent extends Component {
                   <span className={
                     "Gatherers__gatherer-activity-txt"
                     +
-                    (activity_ago(this.state.activity, gatherer_identifier).indexOf('second') !== -1 ?
+                    (activity_ago(this.state.activity, gatherer_identifier).indexOf('second') !== -1
+                     || (activity_ago(this.state.activity, gatherer_identifier).indexOf('minute') !== -1
+                         && 6 > parseInt(activity_ago(this.state.activity, gatherer_identifier).split(' ')[0])) ?
                         " Gatherers__gatherer-activity-txt--operative"
                         :
                         activity_ago(this.state.activity, gatherer_identifier).indexOf('minute') !== -1
