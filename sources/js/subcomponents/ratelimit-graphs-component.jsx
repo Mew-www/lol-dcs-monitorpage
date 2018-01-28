@@ -13,6 +13,7 @@ export class RatelimitGraphsComponent extends Component {
       <div className="RatelimitGraphs">
         {Object.keys(this.state.endpoint_hashes).map((description_key) =>
           <img className="RatelimitGraphs__graph"
+               key={this.state.endpoint_hashes[description_key]}
                src={Settings.MONITOR_RATELIMIT_PNG_URI(this.state.endpoint_hashes[description_key])}
                title={description_key}/>
         )}
