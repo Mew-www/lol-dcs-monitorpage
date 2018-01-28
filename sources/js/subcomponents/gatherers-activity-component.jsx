@@ -1,6 +1,6 @@
 import React, {Component} from "react";
 
-export class GatherersComponent extends Component {
+export class GatherersActivityComponent extends Component {
   constructor(props) {
     super(props);
     this.state = {

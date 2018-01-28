@@ -2,7 +2,7 @@ import React, {Component} from "react";
 import Settings from "../settings";
 import axios from "axios";
 import {GatheredMatchesComponent} from "./gathered-matches-component";
-import {GatherersComponent} from "./gatherers-component";
+import {GatherersActivityComponent} from "./gatherers-activity-component";
 
 export class MonitorComponent extends Component {
   constructor(props) {
@@ -44,7 +44,7 @@ export class MonitorComponent extends Component {
           ""
           :
           <div className="Monitor__gatherers-activity">
-            <GatherersComponent
+            <GatherersActivityComponent
               gatherers_activity={this.state.gatherers_activity}
             />
           </div>
