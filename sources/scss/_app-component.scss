@@ -1,6 +1,5 @@
 .App {
-  .bootstrapbtn {
-    @extend .btn;
-    @extend .btn-success;
+  &__monitor {
+    margin: 20px 60px;
   }
 }

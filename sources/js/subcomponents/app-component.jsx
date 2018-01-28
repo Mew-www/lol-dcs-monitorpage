@@ -1,5 +1,5 @@
 import React, {Component} from "react";
-import Settings from "../settings";
+import {MonitorComponent} from "./monitor-component";
 
 export class AppComponent extends Component {
   constructor(props) {
@@ -8,7 +8,9 @@ export class AppComponent extends Component {
   render() {
     return (
       <div className="App">
-        <button className="bootstrapbtn">just checking sass</button>
+        <section className="App__monitor">
+          <MonitorComponent/>
+        </section>
       </div>
     );
   }
