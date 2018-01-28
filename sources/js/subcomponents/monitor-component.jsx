@@ -31,7 +31,25 @@ export class MonitorComponent extends Component {
       });
     axios.get(Settings.MONITOR_RATELIMIT_ENDPOINTS_URI)
       .then((response) => {
-        this.setState({ratelimit_endpoints: response.data})
+        function recursively_load_png(endpoint, endpoints_remaining, callback_at_end) {
+          axios.get(Settings.MONITOR_RATELIMIT_PNG_URI(endpoint))
+            .then((response) => {
+              if (endpoints_remaining.length === 0) {
+                callback_at_end();
+              } else {
+                recursively_load_png(endpoints_remaining[0], endpoints_remaining.slice(1), callback_at_end);
+              }
+            })
+            .catch((error) => {
+              console.log(error);
+            });
+        }
+        let endpoints_in_array = Object.keys(response.data).map((key) => response.data[key]);
+        recursively_load_png(
+          endpoints_in_array[0],
+          endpoints_in_array.slice(1),
+          () => this.setState({ratelimit_endpoints: response.data})
+        )
       })
       .catch((error) => {
         console.log(error);
