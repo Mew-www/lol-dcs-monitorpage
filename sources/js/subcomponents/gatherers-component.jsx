@@ -52,8 +52,8 @@ export class GatherersComponent extends Component {
                     (activity_ago(this.state.activity, gatherer_identifier).indexOf('second') !== -1 ?
                         " Gatherers__gatherer-activity-txt--operative"
                         :
-                        activity_ago(this.state.activity, gatherer_identifier).indexOf('minutes') !== -1
-                        && 21 > parseInt(activity_ago(this.state.activity, gatherer_identifier).split(' ')[0]) > 6 ?
+                        activity_ago(this.state.activity, gatherer_identifier).indexOf('minute') !== -1
+                        && 21 > parseInt(activity_ago(this.state.activity, gatherer_identifier).split(' ')[0]) ?
                           " Gatherers__gatherer-activity-txt--uncertain"
                           :
                           " Gatherers__gatherer-activity-txt--inactive"
