@@ -8,6 +8,9 @@ export class GatherersComponent extends Component {
     };
   }
   render() {
+    function sort_by_underscore_num(a,b) {
+      return parseInt(a.split('_').slice(-1)[0]) - parseInt(b.split('_').slice(-1)[0]);
+    }
     function activity_ago(epochs_by_identifier, identifier) {
       let then = new Date(parseInt(epochs_by_identifier[identifier])*1000);
       let now = new Date();
@@ -42,7 +45,7 @@ export class GatherersComponent extends Component {
         </div>
         <table className="Gatherers__activity-table">
           <tbody>
-            {Object.keys(this.state.activity).sort((a,b) => a-b).map((gatherer_identifier) =>
+            {Object.keys(this.state.activity).sort(sort_by_underscore_num).map((gatherer_identifier) =>
               <tr className="Gatherers__gatherer" key={gatherer_identifier}>
                 <td className="Gatherers__gatherer-id">{gatherer_identifier}</td>
                 <td className="Gatherers__gatherer-activity">
