@@ -13,4 +13,8 @@
     display: inline-flex;
     @extend %padded-box;
   }
+  &__ratelimit-graphs {
+    // Keep on the next line
+    @extend %padded-box;
+  }
 }
