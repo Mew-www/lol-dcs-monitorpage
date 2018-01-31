@@ -45,7 +45,7 @@ export class GatheredMatchesComponent extends Component {
             }
             return accumulator;
           }, [])
-          .sort();
+          .sort((a,b) => {if (a === null) {return -1;} if (b === null) {return 1;} return a.localeCompare(b);});
         return region_accumulator;
       }, {});
     return (
@@ -61,7 +61,7 @@ export class GatheredMatchesComponent extends Component {
                 <tr>
                   <th> </th>
                   {spanned_semvers_per_region[region].map((semver) =>
-                    <th key={semver}>{semver}</th>
+                    <th key={semver}>{semver ? semver : "Undefined"}</th>
                   )}
                 </tr>
               </thead>
