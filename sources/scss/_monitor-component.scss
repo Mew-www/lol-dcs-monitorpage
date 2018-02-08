@@ -11,6 +11,7 @@
   }
   &__gatherers-activity {
     display: inline-flex;
+    max-width: 42%;
     @extend %padded-box;
   }
   &__ratelimit-graphs {
