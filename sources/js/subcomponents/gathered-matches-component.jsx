@@ -62,7 +62,7 @@ export class GatheredMatchesComponent extends Component {
           }, [])
           .sort((a,b) => {if (a === null) {return -1;} if (b === null) {return 1;} return a.localeCompare(b);});
         return region_accumulator;
-      }, {}).sort(sort_semvers);
+      }, {});
     return (
       <div className="GatheredMatches">
         <div className="GatheredMatches-title">
@@ -75,7 +75,7 @@ export class GatheredMatchesComponent extends Component {
               <thead>
                 <tr>
                   <th> </th>
-                  {spanned_semvers_per_region[region].map((semver) =>
+                  {spanned_semvers_per_region[region].sort(sort_semvers).map((semver) =>
                     <th key={semver}>{semver ? semver : "Undefined"}</th>
                   )}
                 </tr>
@@ -84,7 +84,7 @@ export class GatheredMatchesComponent extends Component {
                 {Object.keys(this.state.matches['per_region'][region]).sort(sort_tiers).map((tier) =>
                   <tr className="GatheredMatches-table-row" key={region+tier}>
                     <td className="GatheredMatches-table-cell">{tier}:</td>
-                      {spanned_semvers_per_region[region].map((semver) =>
+                      {spanned_semvers_per_region[region].sort(sort_semvers).map((semver) =>
                         <td className="GatheredMatches-table-cell" key={region+tier+semver}>{
                           this.state.matches['per_region'][region][tier].find((semver_record) => {
                             return semver_record['game_version__semver'] === semver;
