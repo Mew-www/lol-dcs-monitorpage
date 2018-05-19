@@ -33,6 +33,21 @@ export class GatheredMatchesComponent extends Component {
       }
       return tier_to_num(a) - tier_to_num(b);
     }
+    function sort_semvers(a,b) {
+      // If either is Undefined / null / false
+      if (!a) {return -1}
+      if (!b) {return 1}
+      // Else compare the first part that is different
+      let a_parts = a.split('.');
+      let b_parts = b.split('.');
+      for (let i=0; i < Math.min(a_parts.length, b_parts.length); i++) {
+        if (a_parts[i] !== b_parts[i]) {
+          return a_parts[i] - b_parts[i];
+        }
+      }
+      // Else they're same to the extent of smaller one, so it's whatever
+      return 0;
+    }
     let spanned_semvers_per_region = Object.keys(this.state.matches['per_region'])
       .reduce((region_accumulator, region) => {
         region_accumulator[region] = Object.keys(this.state.matches['per_region'][region])
@@ -47,7 +62,7 @@ export class GatheredMatchesComponent extends Component {
           }, [])
           .sort((a,b) => {if (a === null) {return -1;} if (b === null) {return 1;} return a.localeCompare(b);});
         return region_accumulator;
-      }, {});
+      }, {}).sort(sort_semvers);
     return (
       <div className="GatheredMatches">
         <div className="GatheredMatches-title">
